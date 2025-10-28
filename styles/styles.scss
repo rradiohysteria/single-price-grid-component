@@ -1,0 +1,190 @@
+@use 'variables' as *;
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
+
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+@mixin text-1 {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.4px;
+}
+
+@mixin text-2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.25px;
+}
+
+@mixin text-3 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.25px;
+}
+
+@mixin text-4-bold {
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.45;
+    letter-spacing: -0.25px;
+}
+
+@mixin text-4-regular {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.65;
+    letter-spacing: -0.5px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Karla", sans-serif;
+    background-color: $teal-100;
+    @include flex-center;
+    min-height: 100vh;
+}
+
+main {
+    width: 90%;
+    box-shadow: 0 0.6rem 0.6rem rgba(0, 0, 0, 0.1);
+}
+
+header {
+    background-color: $white;
+    padding: $spacing-500;
+    border-radius: 0.5rem 0.5rem 0 0;
+
+    h1 {
+        @include text-2;
+        color: $teal-500;
+        margin-bottom: $spacing-300;
+    }
+
+    .highlight {
+        color: $green-400;
+        @include text-3;
+        margin-bottom: $spacing-100;
+    }
+
+    p {
+        @include text-4-regular;
+        color: $gray-500;
+    }
+}
+
+.subscription{
+    background-color: $teal-500;
+    padding: $spacing-500;
+    color: $white;
+    @include flex-column;
+    gap: $spacing-300;
+
+    h2 {
+        @include text-3;
+        margin-bottom: $spacing-200;
+    }
+
+    .price {
+        display: flex;
+        gap: $spacing-100;
+        align-items: center;
+
+        
+        p {
+            @include text-4-regular;
+            opacity: 0.5;
+        }
+        .value {
+            @include text-1;
+            opacity: 1;
+        }
+    }
+
+    p {
+        @include text-4-regular;
+    }
+
+    button {
+        border: none;
+        padding: $spacing-100;
+        background-color: $green-400;
+        color: $white;
+        height: 3rem;
+        @include text-4-bold;
+        border-radius: 0.4rem;
+        box-shadow: 0 0.6rem 0.6rem rgba(0, 0, 0, 0.1);
+    }
+}
+
+.why-us {
+    background-color: $teal-400;
+    color: $white;
+    padding: $spacing-500;
+    border-radius: 0 0 0.5rem 0.5rem;
+
+    h2 {
+        @include text-3;
+        margin-bottom: $spacing-200;
+    }
+
+    ul {
+        list-style-type: none;
+        font-size: 0.875rem;
+        font-weight: 400;
+        line-height: 1.45;
+        letter-spacing: 0rem;
+        opacity: 0.75;
+    }
+}
+
+@media screen and (min-width: $breakpoint-tablet) { 
+    main {
+        width: 80%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+
+    header {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        @include flex-column;
+        justify-content: center;
+    }
+
+    .subscription {
+        grid-row-start: 2;
+        border-radius: 0 0 0 0.5rem;
+        @include flex-column;
+        justify-content: center;
+    }
+
+    .why-us {
+        grid-row-start: 2;
+        border-radius: 0 0 0.5rem 0;
+        @include flex-column;
+        justify-content: center;
+    }
+}
+
+@media screen and (min-width: $breakpoint-desktop) {
+    main {
+        width: 50%;
+    }
+}
